@@ -67,6 +67,16 @@ OBJECTS = [
     Object(10, 82, 72)
 ]
 
+# # alternative (p02)
+# KNAPSACK_CAPACITY = 26
+# OBJECTS = [
+#     Object(1, 12, 24),
+#     Object(2, 7,  13),
+#     Object(3, 11, 23),
+#     Object(4, 8,  15),
+#     Object(5, 9,  16)
+# ]
+
 # initialize solver
 s = Solver()
 
