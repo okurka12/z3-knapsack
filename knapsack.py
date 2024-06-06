@@ -1,3 +1,18 @@
+#
+# Solve Knapsack problem using z3
+# Author: Vit Pavlik (xpavli0a)
+# Date: 2024-06-06
+# Assignment for the IAM course, FIT VUT
+#
+# Developed with
+#  - Debian 12.5
+#  - Python 3.12.3
+#  - z3 PyPi package version 4.13.0.0
+#
+# How to run:
+#  - insert knapsack data below (after class definitions)
+#  - on linux, run `python3 knapsack.py | grep o | tr "[" " " | sort -V`
+#
 from z3 import *
 
 
