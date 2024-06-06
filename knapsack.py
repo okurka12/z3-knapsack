@@ -14,6 +14,7 @@ class ObjectArithRefs:
         self.w = w
         self.p = p
 
+
 class Object:
     """an object to fit in knapsack"""
 
@@ -32,7 +33,9 @@ class Object:
         return f"Object"
 
 
-# an instance of the knapsack problem
+################################################################################
+# an instance of the knapsack problem (insert knapsack data here)
+################################################################################
 # p01 from:
 # https://people.sc.fsu.edu/~jburkardt/datasets/knapsack_01/knapsack_01.html
 KNAPSACK_CAPACITY = 165
@@ -59,15 +62,9 @@ for obj in OBJECTS:
     on = Int(f"o{obj.n}")
     obj.addRefs(on, wn, pn)
 
+    s.add(Or(on == 0, on == 1))
     s.add(wn == obj.weight)
     s.add(pn == obj.profit)
-
-    # print(type(pn == obj.profit))  # <class 'z3.z3.BoolRef'>
-
-    s.add(Or(on == 0, on == 1))
-
-
-# print(type(object_taken[0]))  # <class 'z3.z3.ArithRef'>
 
 ################################################################################
 # define the knapsack capacity
@@ -105,7 +102,6 @@ formula_body = And(
     *alternative_bools
 )
 s.add(Not(Exists(alternative_ts, formula_body)))
-# s.add(Exists(alternative_ts, And(alt_sum_greater, *alternative_bools)))
 
 ################################################################################
 # add informative variables
@@ -116,13 +112,6 @@ total_price = Int("total_price")
 s.add(total_weight == object_weight_sum)
 s.add(total_price == object_price_sum)
 s.add(knapsack_cap == c)
-
-
-
-
-
-
-
 
 
 print(s.check())
